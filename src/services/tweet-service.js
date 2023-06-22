@@ -11,7 +11,9 @@ class TweetService {
     async create(data) {
            const content = data.content;
            const tags = content.match(/#+[a-zA-Z0-9(_)]+/g).map((tag)=> tag.substring(1).toLowerCase());
-           const tweet = this.tweetRepository.create(data);
+           const tweet = await this.tweetRepository.create(data);
+           console.log("tweet created", tweet)
+           
            let presentTags = await this.hashtagRepository.findByName(tags)
            console.log("already present tags", presentTags);
            let textOfPresentTags = presentTags.map((tag)=> tag.text)
@@ -19,12 +21,12 @@ class TweetService {
            newTags = newTags.map((tag) => {
               return {
                   text: tag,
-                  tweets: [tweet.id]
+                  tweets: [tweet._id]
               }
            })
            await this.hashtagRepository.bulkCreate(newTags);
            presentTags.forEach((tag)=> {
-              tag.tweets.push(tweet.id)
+              tag.tweets.push(tweet._id)
               tag.save();
            })
 

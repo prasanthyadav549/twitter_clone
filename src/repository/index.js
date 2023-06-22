@@ -4,4 +4,5 @@ module.exports = {
       HashtagRepository: require('./hashtag-repository'),
       CommentRepository: require('./comment-repository'),
       LikeRepository : require('./like-repository'),
+      UserRepository: require('./user-repository')
 }

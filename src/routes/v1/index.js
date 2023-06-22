@@ -1,4 +1,4 @@
-const {tweetController} = require('../../controllers')
+const {tweetController,userController,likeController} = require('../../controllers')
 const express = require('express')
 const router = express.Router();
 
@@ -9,5 +9,10 @@ router.get('/tweets',(req,res)=> {
               success: true
         })
 })
+
+router.post('/sign-up',userController.signUp);
+router.post('/sign-in',userController.signIn);
+router.post('/likes/toggle',likeController.toggleLike)
+
 
 module.exports = router;
