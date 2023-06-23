@@ -12,20 +12,7 @@ app.use('/api', apiRoutes)
 
 app.listen(ServerConfig.PORT, async ()=> {
        console.log('Server started on Port :', ServerConfig.PORT);
+       console.log('aws credentials',ServerConfig.AWS_ACCESS_KEY, ServerConfig.AWS_SECRET_ACCESS_KEY,ServerConfig.AWS_REGION)
         Connect()
-       // await Tweet.create({
-       //        content: 'india vs australia',
-       //        likes: 10,
-       //        noOfReTweets: 0,
-       //        comment: 'happy coding' 
-       //  })
-
-
-       // await Hashtag.create({
-       //        text: 'travel',
-       //        tweets: ['648aa6744f1d388c191cbcff']
-       // })
-
-      
-      
+        
 })
