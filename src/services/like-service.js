@@ -9,15 +9,16 @@ class LikeService {
 
     async toggleLike(modelId,modelType,userId) {
         let likeable;
-        if(modelType === 'Tweet') {
-              likeable = await this.tweetRepository.get(modelId);
+                try {
+                    likeable = await this.tweetRepository.get(modelId);
+                }
+       
+        catch(error) {
+            throw {
+                  error: "Wrong modelId entered"
+            }
         }
-        else if(modelType === 'Comment') {
-             // Todo
-        }
-        else {
-            console.log("wrong modelType");
-        }
+
         const exists = await this.likeRepository.findByUserLikeable({
             user: userId,
             onModel: modelType,
