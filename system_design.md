@@ -29,3 +29,17 @@
 
 
 */
+
+
+tweet :
+     content
+     image
+     lieks []
+     comments []
+     user
+user 👍
+     email,name,password
+like :
+    user
+    likebale -tweet or comment 
+    modelName

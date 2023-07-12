@@ -8,6 +8,21 @@ class TweetRepository extends CrudRepository {
          super(Tweet)
      }
 
+     async findByUserId(userId) {
+          console.log('findByUserId Repository', userId)
+            try {
+
+                  const response = await Tweet.find({
+                    userId: userId
+                  })
+                     console.log("response of findByUserId", response)
+                  return response;
+            }
+            catch(error) {
+                console.log('got the error while finding the tweets',error)
+                throw error;
+            } 
+     }
 
 }
 

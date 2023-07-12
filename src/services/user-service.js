@@ -22,7 +22,7 @@ class UserService {
             const email = data.email;
             const currentPassword = data.password;
             const user = await this.userRepository.findBy({email: email});
-            console.log("user found",user)
+            ///console.log("user found",user)
             if(!user) {
                   throw {
                       message: "No user Found"
@@ -34,6 +34,8 @@ class UserService {
                   }
             }
             console.log("user signed in successfully")
+            const token = user.genJwt();
+            return token;
 
           }
           catch(error) {

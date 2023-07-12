@@ -6,8 +6,7 @@ async function toggleLike(req,res) {
        try {
         const data = req.body;
         const response = await likeService.toggleLike(data.modelId,data.modelType,data.user)
-        console.log('like toggle response',response);
-        console.log("inside the toggle like method")
+     //   console.log('like toggle response',response);
         return res.status(StatusCodes.OK).json({
             success:true,
             message:"Successfully toggled a Like",

@@ -29,7 +29,7 @@ async function signIn(req,res) {
         return res.status(StatusCodes.CREATED).json({
             success:true,
             message:"Successfully Signed in",
-            data: response,
+            token: response,
             error:{}
         })
       }
